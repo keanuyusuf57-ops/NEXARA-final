@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>NEXARA 7 KAIH · SMA Negeri 5 Semarang</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&amp;family=Outfit:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --ink: #120d2b;
+  --teal: #27e0d2;
+  --amber: #ff8f3f;
+  --violet: #7a58f0;
+  --cream: #fff3df;
+  --glass: rgba(18, 13, 43, 0.55);
+  --line: rgba(255, 243, 223, 0.28);
+  --hd: 'Abril Fatface', 'Playfair Display', Georgia, serif;
+  --bd: 'Outfit', system-ui, sans-serif;
+  color-scheme: dark;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--ink);
+  color: var(--cream);
+  font: 400 1rem/1.6 var(--bd);
+  overflow-x: hidden;
+}
+
+#bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  transition: transform 1.4s ease, filter 1.4s ease;
+  transform-origin: 50% 70%;
+}
+
+body.in #bg {
+  transform: scale(1.35);
+  filter: blur(4px) brightness(0.5) saturate(1.1);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(18, 13, 43, 0.78), rgba(18, 13, 43, 0.1) 65%);
+}
+
+body.in::after {
+  background: linear-gradient(180deg, rgba(18, 13, 43, 0.55), rgba(18, 13, 43, 0.8));
+}
+
+header {
+  position: fixed;
+  top: env(safe-area-inset-top, 0px);
+  left: 0;
+  right: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem clamp(1rem, 4vw, 3.2rem);
+}
+
+.lg {
+  font: 600 1rem var(--bd);
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  color: inherit;
+}
+
+.lg b {
+  font: 1.5rem var(--hd);
+  color: var(--amber);
+}
+
+nav {
+  display: flex;
+  gap: clamp(0.8rem, 3vw, 2.4rem);
+  align-items: center;
+}
+
+nav button {
+  background: none;
+  border: 0;
+  color: var(--cream);
+  font: inherit;
+  cursor: pointer;
+  padding: 0.3rem 0;
+  border-bottom: 2px solid transparent;
+}
+
+nav button:hover,
+nav button.on {
+  border-color: var(--amber);
+}
+
+nav .reg {
+  border: 1px solid var(--line);
+  padding: 0.5rem 1.2rem;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+main {
+  padding: 0 clamp(1rem, 4vw, 3.2rem);
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 44rem;
+  padding: 6rem 0 3rem;
+}
+
+.hero small {
+  color: #b9a8ff;
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+}
+
+.hero h1 {
+  font: clamp(4rem, 15vw, 10.5rem) / 0.9 var(--hd);
+  margin: 0 0 1.4rem;
+  letter-spacing: 0.01em;
+  color: #fff;
+  text-shadow: 0 6px 40px rgba(39, 224, 210, 0.25);
+}
+
+.hero p {
+  max-width: 34rem;
+  margin: 0 0 2rem;
+  font-weight: 300;
+  font-size: 1.1rem;
+}
+
+.cta {
+  background: #fff;
+  color: var(--ink);
+  border: 0;
+  font: 600 1rem var(--bd);
+  padding: 0.9rem 1.6rem;
+  cursor: pointer;
+  display: inline-flex;
+  gap: 1.2rem;
+  align-items: center;
+  align-self: flex-start;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.cta:hover {
+  background: var(--teal);
+  transform: translateX(4px);
+}
+
+.cta.sm {
+  padding: 0.7rem 1.3rem;
+}
+
+.page {
+  padding: 6.5rem 0 4rem;
+  max-width: 62rem;
+  margin: 0 auto;
+}
+
+.page h2 {
+  font: clamp(2.2rem, 6vw, 3.8rem) / 1 var(--hd);
+  margin: 0 0 0.6rem;
+}
+
+.lead {
+  max-width: 36rem;
+  font-weight: 300;
+  margin: 0 0 1.6rem;
+}
+
+.card {
+  background: var(--glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+  padding: clamp(1rem, 3vw, 2rem);
+  max-width: 34rem;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin: 0 0 0.3rem;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  background: rgba(255, 243, 223, 0.08);
+  border: 1px solid var(--line);
+  color: var(--cream);
+  font: inherit;
+  padding: 0.7rem 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.msg {
+  min-height: 1.5rem;
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+}
+
+.msg.bad {
+  color: #ffb38a;
+}
+
+.msg.ok {
+  color: var(--teal);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 1rem;
+  margin: 1.2rem 0;
+}
+
+.hb {
+  position: relative;
+  border: 1px solid var(--line);
+  background: var(--glass);
+  color: inherit;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  font: inherit;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.hb:hover {
+  transform: translateY(-3px);
+}
+
+.hb svg {
+  display: block;
+  width: 100%;
+  height: 120px;
+}
+
+.hb span {
+  display: block;
+  padding: 0.7rem 0.9rem;
+}
+
+.hb small {
+  display: block;
+  font-weight: 300;
+  opacity: 0.85;
+}
+
+.hb[aria-pressed=true] {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 2px var(--teal) inset;
+}
+
+.hb[aria-pressed=true]::after {
+  content: "Sudah";
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: var(--teal);
+  color: var(--ink);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.1rem 0.6rem;
+}
+
+.bar {
+  height: 10px;
+  background: rgba(255, 243, 223, 0.15);
+  margin: 0.2rem 0 0.9rem;
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--teal), var(--amber));
+}
+
+.wrap {
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 560px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.55rem 0.7rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.95rem;
+}
+
+.row {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.ghost {
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--cream);
+  padding: 0.7rem 1.2rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+.md {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: rgba(18, 13, 43, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+#toast {
+  position: fixed;
+  bottom: calc(1.2rem + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--cream);
+  color: var(--ink);
+  padding: 0.7rem 1.2rem;
+  z-index: 20;
+}
+
+footer {
+  padding: 1.5rem clamp(1rem, 4vw, 3.2rem);
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+@media (max-width: 640px) {
+  nav button:not(.reg) {
+    display: none;
+  }
+
+  .lg span {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+.fl {
+  animation: fl 9s ease-in-out infinite alternate;
+}
+
+@keyframes fl {
+  to {
+    transform: translate(40px, -14px);
+  }
+}
+
+.stats {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+
+.stat {
+  background: var(--glass);
+  border: 1px solid var(--line);
+  padding: 1rem 1.4rem;
+  min-width: 9rem;
+}
+
+.stat b {
+  display: block;
+  font: 2.6rem/1 var(--hd);
+}
+
+.g2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.dc {
+  background: var(--glass);
+  border: 1px solid var(--line);
+  padding: 1rem;
+}
+
+.dc h4 {
+  margin: 0 0 0.6rem;
+  font: 1.25rem var(--hd);
+}
+
+.dn {
+  width: 120px;
+  height: 120px;
+  display: block;
+  margin: 0 auto 0.8rem;
+}
+
+.sm {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+.page h3 {
+  font: 1.7rem var(--hd);
+  margin: 2rem 0 0.4rem;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0 0 1.4rem;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+  margin-bottom: 0.5rem;
+}
+
+.sc {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.sc label {
+  flex: 1;
+  margin: 0;
+  position: relative;
+  font-weight: 400;
+}
+
+.sc input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+
+.sc span {
+  display: block;
+  text-align: center;
+  border: 1px solid var(--line);
+  padding: 0.55rem 0;
+  background: rgba(255, 243, 223, 0.06);
+}
+
+.sc input:checked + span {
+  background: var(--teal);
+  color: var(--ink);
+  border-color: var(--teal);
+  font-weight: 600;
+}
+
+.sc input:focus-visible + span {
+  outline: 2px solid var(--amber);
+}
+
+.ends {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  opacity: 0.75;
+  margin-top: 0.25rem;
+}
+
+select option {
+  color: #120d2b;
+}
+
+.team {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.av {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 2px dashed var(--line);
+  margin: 0 0 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  opacity: 0.85;
+  overflow: hidden;
+}
+
+.av img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hb {
+  cursor: default;
+}
+
+.hb:hover {
+  transform: none;
+}
+
+.card,
+.dc,
+.stat,
+.hb {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.17), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(26px) saturate(180%);
+  -webkit-backdrop-filter: blur(26px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 22px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), inset 0 -1px 0 rgba(255, 255, 255, 0.08), 0 10px 34px rgba(0, 0, 0, 0.28);
+}
+
+.card input,
+.card select,
+.card textarea {
+  border-radius: 12px;
+}
+
+.pg {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 0.5rem 1.6rem;
+}
+
+.pl {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.pl b {
+  font-weight: 600;
+}
+
+.bar.t {
+  height: 8px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 0.3rem 0 0.5rem;
+}
+
+.dn.big {
+  width: 220px;
+  height: 220px;
+}
+
+.shp {
+  position: relative;
+  isolation: isolate;
+  max-width: 32rem;
+  margin: 1.2rem 0;
+}
+
+.shp::before,
+.shp::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+}
+
+.shp::before {
+  width: 170px;
+  height: 170px;
+  left: -34px;
+  top: -26px;
+  background: linear-gradient(135deg, var(--teal), var(--violet));
+}
+
+.shp::after {
+  width: 140px;
+  height: 140px;
+  right: -26px;
+  bottom: -24px;
+  background: linear-gradient(135deg, var(--amber), #ff5a8a);
+}
+
+.shp .dc {
+  padding: 0.5rem 0.8rem;
+}
+
+.shp table {
+  min-width: 0;
+}
+
+.shp th,
+.shp td {
+  padding: 0.35rem 0.5rem;
+  font-size: 0.85rem;
+}
+</style>
+</head>
+<body>
+<svg aria-hidden="true" id="bg" preserveaspectratio="xMidYMid slice" viewbox="0 0 1600 900">
+  <defs>
+    <lineargradient id="sk" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#0b1a33"></stop>
+      <stop offset=".5" stop-color="#1c5f75"></stop>
+      <stop offset="1" stop-color="#6b4de6"></stop>
+    </lineargradient>
+    <lineargradient id="fa" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#e9fffd" stop-opacity=".95"></stop>
+      <stop offset="1" stop-color="#27e0d2" stop-opacity=".25"></stop>
+    </lineargradient>
+    <lineargradient id="lv" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#ff5a2a"></stop>
+      <stop offset=".5" stop-color="#ffb347"></stop>
+      <stop offset="1" stop-color="#ff5a2a"></stop>
+    </lineargradient>
+    <radialgradient id="gl">
+      <stop offset="0" stop-color="#7ffff3" stop-opacity=".8"></stop>
+      <stop offset="1" stop-color="#27e0d2" stop-opacity="0"></stop>
+    </radialgradient>
+    <filter id="gr">
+      <feturbulence basefrequency=".9" numoctaves="2" type="fractalNoise"></feturbulence>
+      <fecolormatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .5 0"></fecolormatrix>
+    </filter>
+  </defs>
+
+  <rect fill="url(#sk)" height="900" width="1600"></rect>
+  <ellipse cx="900" cy="330" fill="url(#gl)" rx="520" ry="300"></ellipse>
+
+  <g fill="#fff" opacity=".7">
+    <circle cx="200" cy="90" r="2"></circle>
+    <circle cx="520" cy="150" r="1.6"></circle>
+    <circle cx="1260" cy="80" r="2"></circle>
+    <circle cx="1450" cy="200" r="1.5"></circle>
+    <circle cx="760" cy="60" r="1.5"></circle>
+  </g>
+
+  <path d="M560 330 q120-60 280-40 q160-30 300 30 q-120 40-280 20 q-160 40-300-10z" fill="#ff9d6a" opacity=".35"></path>
+  <path d="M0 560 L120 470 190 520 300 400 400 500 520 440 640 560z" fill="#17335a" opacity=".8"></path>
+  <path d="M900 560 L1040 430 1120 490 1230 380 1350 470 1460 410 1600 520 1600 600z" fill="#d4572f" opacity=".85"></path>
+  <path d="M1230 380 L1290 450 1350 470 1300 560 1230 520z" fill="#ff9a4a" opacity=".7"></path>
+  <rect fill="url(#fa)" height="470" width="90" x="745" y="120"></rect>
+  <rect fill="#1f6b88" height="60" opacity=".85" width="150" x="715" y="90"></rect>
+  <polygon class="fl" fill="#4ad9ff" points="640,170 680,110 720,170 690,260"></polygon>
+  <polygon class="fl" fill="#a7f6ff" opacity=".8" points="680,110 720,170 690,260"></polygon>
+
+  <g fill="#7ffff3" opacity=".8">
+    <polygon points="560,600 590,540 620,600"></polygon>
+    <polygon points="940,600 975,530 1010,600"></polygon>
+    <polygon points="1000,600 1020,560 1045,600"></polygon>
+  </g>
+
+  <rect fill="#0e2b4a" height="140" width="1600" y="580"></rect>
+  <path d="M0 640 Q400 600 800 640 T1600 620 L1600 720 0 720z" fill="url(#lv)" opacity=".95"></path>
+  <path d="M0 690 Q400 660 800 690 T1600 680 L1600 720 0 720z" fill="#fff" opacity=".18"></path>
+  <path d="M0 720 L1600 720 1600 900 0 900z" fill="#0a1328"></path>
+  <path d="M0 760 Q200 690 330 720 Q420 700 520 770 L560 900 0 900z" fill="#162a4a"></path>
+  <path d="M1050 900 Q1180 780 1330 800 Q1480 760 1600 820 L1600 900z" fill="#10223f"></path>
+  <path d="M0 780 q80-110 160-60 q60 30 90 100 L0 900z" fill="#0a1328"></path>
+
+  <g fill="#0a1328">
+    <rect height="110" width="6" x="228" y="620"></rect>
+    <path d="M231 690 l-18 70 h36z"></path>
+    <circle cx="231" cy="660" r="9"></circle>
+  </g>
+
+  <g fill="none" opacity=".9" stroke="#fff" stroke-linecap="round" stroke-width="2.2">
+    <path d="M1050 210 q10-8 20 0 q10-8 20 0"></path>
+    <path d="M1130 250 q8-6 16 0 q8-6 16 0"></path>
+    <path d="M980 270 q8-6 16 0 q8-6 16 0"></path>
+    <path d="M1200 190 q7-5 14 0 q7-5 14 0"></path>
+  </g>
+
+  <rect filter="url(#gr)" height="900" opacity=".1" width="1600"></rect>
+</svg>
+
+<header>
+  <button aria-label="Beranda" class="lg" onclick="go('home')">
+    <b>5</b><span>SMA Negeri 5 Semarang</span>
+  </button>
+  <nav>
+    <button data-v="home" onclick="go('home')">Beranda</button>
+    <button data-v="diagram" onclick="go('diagram')">Diagram</button>
+    <button data-v="murid" onclick="go('murid')">Laman Murid</button>
+    <button data-v="admin" onclick="go('admin')">Laman Admin</button>
+    <button data-v="about" onclick="go('about')">Tentang</button>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="v-home">
+    <small>Dashboard 7 Kebiasaan Anak Indonesia Hebat</small>
+    <h1>NEXARA</h1>
+    <p>Setiap hari, catat tujuh kebiasaan yang membentuk karaktermu: bangun pagi, beribadah, berolahraga, makan sehat, gemar belajar, bermasyarakat, dan tidur cepat. Satu pengisian per hari, satu langkah menuju karakter unggul.</p>
+<button class="cta" onclick="go('diagram')">Next <span aria-hidden="true">▶</span></button>
+</section>
+<section class="page" hidden="" id="v-diagram">
+<h2>Diagram 7 KAIH</h2>
+<p class="lead">Tujuh kebiasaan yang kita jalankan bersama, dan seberapa rajin murid menjalankannya. Diagram diperbarui otomatis setiap ada murid yang mengisi.</p>
+<div class="grid" id="hg"></div>
+<h3>Hasil keseluruhan</h3>
+<div class="stats"><div class="stat"><b id="st-n">0</b>murid mengisi</div><div class="stat"><b id="st-p">0%</b>rata-rata kerajinan</div></div>
+<div class="dc" style="margin:1rem 0"><h4>📊 Persentase Skor Per Kebiasaan</h4><div class="pg" id="bars"></div></div>
+<div class="dc" style="margin:1rem 0;text-align:center"><h4>Diagram lingkaran keseluruhan</h4><div id="big"></div><p class="sm" id="bigc"></p></div>
+<h3>Diagram tiap kebiasaan</h3>
+<div class="g2" id="dg"></div>
+<h3>Data hasil</h3>
+<div class="shp"><div class="dc"><div class="wrap"><table><thead><tr><th>Kebiasaan</th><th>Rata-rata skor (0–4)</th><th>Persentase</th></tr></thead><tbody id="tt"></tbody></table></div></div></div>
+<p class="sm" id="upd"></p>
+<p><button class="cta" onclick="go('murid')">Next <span aria-hidden="true">▶</span></button></p>
+</section>
+<section class="page" hidden="" id="v-murid">
+<h2>Isi 7 KAIH hari ini</h2>
+<p class="lead">Jawab sesuai kebiasaanmu yang sebenarnya. Satu nama hanya bisa mengisi satu kali per hari.</p>
+<div class="card" style="max-width:100%">
+<label for="nm">Nama lengkap</label><input autocomplete="name" id="nm"/>
+<label for="ab">Nomor absen</label><input id="ab" inputmode="numeric" max="60" min="1" type="number"/>
+<label for="kl">Kelas</label><select id="kl"></select>
+<label for="tg">Tanggal pengisian</label><input id="tg" type="date"/>
+<p class="sm" style="margin:1.2rem 0 .8rem">Pilih angka 0 sampai 4. 0 = Tidak pernah, 1 = Jarang, 2 = Kadang-kadang, 3 = Sering, 4 = Setiap hari.</p>
+<div id="qs"></div>
+<div class="msg" id="m2" role="status"></div>
+<button class="cta sm" id="sv">Kirim jawaban</button>
+</div>
+</section>
+<section class="page" hidden="" id="v-admin">
+<h2>Panel admin</h2>
+<div class="row" style="margin-bottom:1rem">
+<!-- ▼▼ LINK ASLI GOOGLE SPREADSHEET (tombol admin). Ganti href jika spreadsheet pindah ▼▼ -->
+<a class="cta sm" href="https://docs.google.com/spreadsheets/d/1v7MJfn2mJc6aGA9JfEyxDAsLZcC5MWArF_hZvPflvp0/edit?usp=sharing" id="sl" rel="noopener" target="_blank">Buka Google Spreadsheet</a>
+<!-- ▲▲ -->
+<button class="ghost" id="rf">Muat ulang data</button><button class="ghost" id="lo">Log out</button><button class="ghost" id="dl" style="border-color:#ffb38a;color:#ffb38a">Hapus data</button></div>
+<p class="lead" id="sum"></p>
+<div class="wrap"><table><thead id="th"></thead><tbody id="tb"></tbody></table></div>
+</section>
+<section class="page" hidden="" id="v-about">
+<h2>Tentang pembuat</h2>
+<p class="lead">NEXARA 7 KAIH dibuat oleh murid dan guru SMA Negeri 5 Semarang.</p>
+<div class="team" id="tm"></div>
+</section>
+</main>
+<footer>SMA Negeri 5 Semarang © 2026 · NEXARA × 7 KAIH – Menuju Karakter Unggul</footer>
+<div class="md" hidden="" id="pin"><div class="card" style="width:100%;max-width:340px">
+<h3 style="font:1.6rem var(--hd);margin:0 0 .4rem">Akses admin</h3><p style="margin:0 0 .8rem">Masukkan password untuk membuka panel admin.</p>
+<input autocomplete="off" id="pi" type="password"/><div class="msg bad" id="pm"></div>
+<div class="row"><button class="ghost" id="pc0">Batal</button><button class="cta sm" id="pok">Masuk</button></div></div></div>
+<div hidden="" id="toast"></div>
+<!-- ▼▼ TEMPEL LINK SCRIPT DI SINI: isi SCRIPT_URL dengan URL Web App Google Apps Script (berakhiran /exec) ▼▼ -->
+<script>
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyK9wSEGSNBb2-DdbNCubxWReQPEwe7vMrdEPkDBooYg85n-kabeFAtUK90fDVSv4Q/exec';
+// ▲▲ selesai ▲▲
+
+const H = [
+  ['Bangun pagi', 'Seberapa sering kamu bangun pagi dengan badan segar tanpa drama kesiangan?', '⏰', '#ff9d6a', '#7a58f0'],
+  ['Beribadah', 'Seberapa konsisten kamu meluangkan waktu beribadah dan berdoa demi ketenangan mental dan kelancaran impianmu?', '🙏', '#ffd27a', '#2c6fb8'],
+  ['Berolahraga', 'Seberapa rutin kamu menggerakkan tubuh agar stamina tidak gampang drop?', '🏃', '#27e0d2', '#1b2f6b'],
+  ['Makan sehat dan bergizi', 'Seberapa sering kamu makan bergizi seimbang, bukan sekadar kenyang atau junk food?', '🥗', '#9be37a', '#1c6b6b'],
+  ['Gemar belajar', 'Di luar buku sekolah, seberapa sering kamu membaca artikel, buku motivasi, atau wawasan baru?', '📚', '#c9a7ff', '#3a2a8c'],
+  ['Bermasyarakat', 'Seberapa sering kamu bekerja sama, bersikap sopan, dan peduli pada teman serta lingkungan sekitar?', '🤝', '#ff8f3f', '#8c2f5a'],
+  ['Tidur cepat', 'Seberapa baik kamu menjaga jam dan kualitas tidur malam (7–8 jam) agar fokus tetap tajam?', '🌙', '#7fa8ff', '#120d2b']
+];
+const Q = ['Saya bangun pagi secara mandiri tanpa harus dibangunkan berulang kali oleh orang tua atau alarm.', 'Saya langsung merapikan tempat tidur dan mempersiapkan diri dengan tenang tanpa terburu-buru setelah bangun pagi.', 'Saya melaksanakan ibadah wajib atau doa harian sesuai dengan agama dan kepercayaan yang saya anut secara tepat waktu.', 'Saya mengawali dan mengakhiri setiap kegiatan penting sehari-hari dengan berdoa.', 'Saya meluangkan waktu untuk melakukan aktivitas fisik atau olahraga rutin guna menjaga kesehatan jasmani.', 'Saya berpartisipasi aktif dalam kegiatan olahraga (seperti senam, sepak bola, lari, dll.) yang diadakan di sekolah maupun di lingkungan rumah.', 'Saya mengonsumsi makanan yang sehat, bersih, dan memiliki gizi seimbang (sayur, buah, protein) setiap harinya.', 'Saya menghindari konsumsi makanan cepat saji atau jajanan kurang sehat yang berlebihan demi menjaga kesehatan tubuh.', 'Saya memiliki semangat untuk membaca buku, mencari tahu hal-hal baru, atau mengulang materi pelajaran di luar jam sekolah atas kesadaran sendiri.', 'Saya aktif bertanya, berdiskusi, atau mengeksplorasi sumber pengetahuan baru ketika menghadapi materi atau masalah yang belum saya pahami.', 'Saya berinteraksi dan bekerja sama secara baik dengan teman, tetangga, serta warga sekitar tanpa membeda-bedakan.', 'Saya membiasakan diri mengucapkan kata "tolong", "maaf", serta "terima kasih" dan ikut serta dalam kegiatan sosial atau kerja bakti di lingkungan sekitar.', 'Saya menghindari kebiasaan tidur terlalu larut malam agar waktu istirahat tubuh tercukupi dengan baik.', 'Saya mematikan atau menjauhkan gawai (smartphone/layar) menjelang waktu tidur agar kualitas tidur saya lebih nyenyak.'];
+const QS = ['Bangun mandiri', 'Siap dengan tenang', 'Ibadah tepat waktu', 'Berdoa awal dan akhir', 'Aktivitas fisik rutin', 'Olahraga aktif', 'Makan bergizi', 'Hindari jajanan tak sehat', 'Semangat belajar', 'Aktif bertanya', 'Kerja sama sekitar', 'Sopan dan kerja bakti', 'Tidak tidur larut', 'Jauhkan gawai'];
+// ▼▼ DATA TIM PEMBUAT (tentang). Isi foto dengan alamat gambar, mis. foto:'img/fahim.jpg' ▼▼
+const TIM = [
+  ['Fahim Rayhan I. P', 'Murid SMA Negeri 5 Semarang kelas XI-8', ''],
+  ['Nieki Erli A', 'Murid SMA Negeri 5 Semarang kelas XI-8', ''],
+  ['Vina Khalimatus S', 'Murid SMA Negeri 5 Semarang kelas XI-8', ''],
+  ['Keanu Yusuf A', 'Murid SMA Negeri 5 Semarang kelas XI-8', ''],
+  ['M Addia Hadyan Gala', 'Murid SMA Negeri 5 Semarang kelas XI-8', ''],
+  ['Nico Chaesario', 'Guru Informatika SMA Negeri 5 Semarang', ''],
+  ['Rohmat Nugroho', 'Guru KKA SMA Negeri 5 Semarang', '']
+];
+// ▲▲
+const $ = s => document.querySelector(s),
+  V = ['home', 'diagram', 'murid', 'admin', 'about'];
+const today = () => new Date().toLocaleDateString('en-CA', {
+  timeZone: 'Asia/Jakarta'
+});
+const toast = t => {
+  const e = $('#toast');
+  e.textContent = t;
+  e.hidden = false;
+  clearTimeout(toast.t);
+  toast.t = setTimeout(() => e.hidden = true, 3000)
+};
+const pwGet = () => {
+    try {
+      return sessionStorage.getItem('nx_pw')
+    } catch (e) {
+      return null
+    }
+  },
+  pwSet = v => {
+    try {
+      v ? sessionStorage.setItem('nx_pw', v) : sessionStorage.removeItem('nx_pw')
+    } catch (e) {}
+  };
+async function api(o) {
+  if (!SCRIPT_URL) throw new Error('NO_URL');
+  const r = await fetch(SCRIPT_URL, {
+    method: 'POST',
+    body: JSON.stringify(o)
+  });
+  const t = await r.text();
+  try {
+    return JSON.parse(t)
+  } catch (e) {
+    throw new Error('Balasan bukan JSON: ' + t.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').slice(0, 90))
+  }
+}
+
+function scene(h, i) {
+  const [, , g, a, b] = h;
+  return `<svg viewBox="0 0 210 120" preserveAspectRatio="xMidYMid slice" style="display:block;width:100%;height:120px" aria-hidden="true"><defs><linearGradient id="q${i}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${b}"/><stop offset="1" stop-color="${a}"/></linearGradient></defs><rect width="210" height="120" fill="url(#q${i})"/><circle cx="150" cy="38" r="20" fill="#fff" opacity=".3"/><path d="M0 95 L50 48 85 80 125 35 175 85 210 60 V120 H0z" fill="${b}" opacity=".75"/><path d="M0 108 L60 78 120 104 210 74 V120 H0z" fill="#120d2b" opacity=".7"/><text x="30" y="62" font-size="34">${g}</text></svg>`
+}
+$('#hg').innerHTML = H.map((h, i) => `<div class="hb">${scene(h,i)}<span><b>${h[0]}</b><small>${h[1]}</small></span></div>`).join('');
+$('#tm').innerHTML = TIM.map(t => `<div class="card"><div class="av">${t[2]?`<img src="${t[2]}" alt="Foto ${t[0]}">`:'Foto'}</div><b>${t[0]}</b><div class="sm">${t[1]}</div></div>`).join('');
+{
+  const k = $('#kl');
+  ['X', 'XI', 'XII'].forEach(a => {
+    for (let i = 1; i <= 12; i++) k.add(new Option(a + '-' + i, a + '-' + i))
+  });
+  k.insertBefore(new Option('Pilih kelas', ''), k.firstChild);
+  k.value = '';
+  $('#tg').value = today()
+}
+$('#qs').innerHTML = H.map((h, hi) => `<h3 style="font-size:1.4rem;margin:1.4rem 0 .6rem">${h[0]}</h3>` + [0, 1].map(j => {
+  const n = hi * 2 + j;
+  return `<fieldset><legend>${Q[n]}</legend><div class="sc">${[0,1,2,3,4].map(v=>`<label><input type="radio" name="q${n}" value="${v}"><span>${v}</span></label>`).join('')}</div><div class="ends"><span>Tidak pernah</span><span>Setiap hari</span></div></fieldset>`
+}).join('')).join('');
+let CUR = 'home';
+
+function go(v) {
+  if (v === 'admin' && !pwGet()) {
+    $('#pin').hidden = false;
+    $('#pi').value = '';
+    $('#pm').textContent = '';
+    setTimeout(() => $('#pi').focus(), 50);
+    return
+  }
+  if (CUR === 'admin' && v !== 'admin') pwSet(null);
+  CUR = v;
+  document.body.classList.toggle('in', v !== 'home');
+  V.forEach(k => $('#v-' + k).hidden = k !== v);
+  document.querySelectorAll('nav button[data-v]').forEach(b => b.classList.toggle('on', b.dataset.v === v));
+  scrollTo(0, 0);
+  if (v === 'diagram') loadStats();
+  if (v === 'admin') loadAdmin()
+}
+/* ---- diagram ---- */
+let ST = null;
+try {
+  ST = JSON.parse(localStorage.getItem('nx_st'))
+} catch (e) {}
+ST = ST || {
+  count: 0,
+  q: Array(14).fill(0)
+};
+const pct = (q, i) => Math.round(((+q[2 * i] || 0) + (+q[2 * i + 1] || 0)) / 8 * 100);
+
+function donut(p, c) {
+  const L = 2 * Math.PI * 46;
+  return `<svg class="dn" viewBox="0 0 120 120" role="img" aria-label="${p} persen"><circle cx="60" cy="60" r="46" fill="none" stroke="rgba(255,243,223,.15)" stroke-width="14"/><circle cx="60" cy="60" r="46" fill="none" stroke="${c}" stroke-width="14" stroke-dasharray="${L*p/100} ${L}" transform="rotate(-90 60 60)"/><text x="60" y="68" text-anchor="middle" font-size="24" fill="#fff" font-family="Abril Fatface,serif">${p}%</text></svg>`
+}
+
+function render() {
+  const q = ST.q,
+    n = +ST.count || 0,
+    P = H.map((_, i) => pct(q, i)),
+    avg = Math.round(P.reduce((a, b) => a + b, 0) / 7);
+  $('#st-n').textContent = n;
+  $('#st-p').textContent = (n ? avg : 0) + '%';
+  $('#bars').innerHTML = H.map((h, i) => `<div><div class="pl"><span>${h[2]} ${h[0]}</span><b>${P[i]}%</b></div><div class="bar t"><i style="width:${P[i]}%;background:${h[3]}"></i></div></div>`).join('');
+  $('#big').innerHTML = donut(n ? avg : 0, '#27e0d2').replace('class="dn"', 'class="dn big"');
+  $('#bigc').textContent = 'Rata-rata 7 kebiasaan dari ' + n + ' murid';
+  $('#dg').innerHTML = H.map((h, i) => `<div class="dc"><h4>${h[0]}</h4>${donut(P[i],h[3])}${[0,1].map(j=>{const v=Math.round((+q[i*2+j]||0)/4*100);return`<div class="sm">${QS[i*2+j]}: ${v}%</div><div class="bar"><i style="width:${v}%;background:${h[3]}"></i></div>`}).join('')}</div>`).join('');
+  $('#tt').innerHTML = H.map((h, i) => `<tr><td>${h[0]}</td><td>${(((+q[2*i]||0)+(+q[2*i+1]||0))/2).toFixed(2)}</td><td>${P[i]}%</td></tr>`).join('');
+  $('#upd').textContent = SCRIPT_URL ? 'Diperbarui otomatis dari spreadsheet.' : 'Belum tersambung ke spreadsheet: tempel link script di file HTML.'
+}
+async function loadStats() {
+  try {
+    const r = await api({
+      action: 'stats'
+    });
+    if (r && r.q) {
+      ST = r;
+      try {
+        localStorage.setItem('nx_st', JSON.stringify(r))
+      } catch (e) {}
+    }
+  } catch (e) {}
+  render()
+}
+setInterval(() => {
+  if (!$('#v-diagram').hidden) loadStats()
+}, 15000);
+render();
+if (SCRIPT_URL) loadStats();
+/* ---- murid ---- */
+$('#sv').onclick = async () => {
+  const m = $('#m2'),
+    b = $('#sv');
+  m.className = 'msg bad';
+  const nama = $('#nm').value.trim().replace(/\s+/g, ' '),
+    absen = $('#ab').value.trim(),
+    kelas = $('#kl').value,
+    tgl = $('#tg').value;
+  if (nama.length < 3 || !absen || !kelas || !tgl) {
+    m.textContent = 'Lengkapi nama lengkap, nomor absen, kelas, dan tanggal.';
+    return
+  }
+  const j = [];
+  for (let i = 0; i < 14; i++) {
+    const c = document.querySelector(`input[name=q${i}]:checked`);
+    if (!c) {
+      m.textContent = 'Masih ada pernyataan yang belum dijawab.';
+      return
+    }
+    j.push(+c.value)
+  }
+  b.disabled = true;
+  m.className = 'msg';
+  m.textContent = 'Mengirim…';
+  try {
+    const r = await api({
+      action: 'submit',
+      nama,
+      absen,
+      kelas,
+      tanggal: tgl,
+      jawaban: j
+    });
+    if (!r.ok) {
+      m.className = 'msg bad';
+      m.textContent = r.msg || 'Gagal mengirim.';
+      b.disabled = false;
+      return
+    }
+    $('#nm').value = '';
+    $('#ab').value = '';
+    $('#kl').value = '';
+    $('#tg').value = today();
+    document.querySelectorAll('#qs input').forEach(i => i.checked = false);
+    m.textContent = '';
+    b.disabled = false;
+    toast('Jawaban berhasil terkirim. Terima kasih!');
+    go('home');
+    loadStats()
+  } catch (e) {
+    m.className = 'msg bad';
+    m.textContent = SCRIPT_URL ? 'Gagal terhubung ke spreadsheet (' + e.message + '). Periksa pengaturan deploy lalu coba lagi.' : 'Link script belum dipasang di file HTML.';
+    b.disabled = false
+  }
+};
+/* ---- admin ---- */
+$('#pc0').onclick = () => {
+  $('#pin').hidden = true
+};
+$('#pi').onkeydown = e => {
+  if (e.key === 'Enter') $('#pok').click()
+};
+$('#pok').onclick = async () => {
+  const pw = $('#pi').value,
+    m = $('#pm');
+  m.textContent = 'Memeriksa…';
+  try {
+    const r = await api({
+      action: 'rows',
+      pw
+    });
+    if (!r.ok) {
+      m.textContent = 'Password salah.';
+      return
+    }
+    pwSet(pw);
+    $('#pin').hidden = true;
+    go('admin')
+  } catch (e) {
+    m.textContent = SCRIPT_URL ? 'Tidak bisa terhubung ke server.' : 'Link script belum dipasang di file HTML.'
+  }
+};
+async function loadAdmin() {
+  try {
+    const r = await api({
+      action: 'rows',
+      pw: pwGet()
+    });
+    if (!r.ok) {
+      pwSet(null);
+      toast('Sesi berakhir, masuk lagi.');
+      go('home');
+      return
+    }
+    $('#sum').textContent = r.rows.length + ' jawaban tercatat di spreadsheet.';
+    $('#th').innerHTML = '<tr>' + r.head.map(h => `<th>${h.length>28?h.slice(0,28)+'…':h}</th>`).join('') + '</tr>';
+    const tb = $('#tb');
+    tb.textContent = '';
+    r.rows.slice().reverse().forEach(x => {
+      const tr = tb.insertRow();
+      x.forEach(c => {
+        tr.insertCell().textContent = c
+      })
+    })
+  } catch (e) {
+    $('#sum').textContent = 'Data belum bisa dimuat.'
+  }
+}
+$('#dl').onclick = async () => {
+  if (!confirm('Hapus SEMUA data jawaban di spreadsheet? Tindakan ini tidak bisa dibatalkan.')) return;
+  try {
+    const r = await api({
+      action: 'clear',
+      pw: pwGet()
+    });
+    if (!r.ok) throw new Error(r.msg || 'Ditolak');
+    ST = {
+      count: 0,
+      q: Array(14).fill(0)
+    };
+    try {
+      localStorage.setItem('nx_st', JSON.stringify(ST))
+    } catch (e) {}
+    render();
+    toast('Semua data sudah dihapus');
+    loadAdmin()
+  } catch (e) {
+    toast('Gagal menghapus: ' + e.message)
+  }
+};
+$('#rf').onclick = loadAdmin;
+$('#lo').onclick = () => {
+  pwSet(null);
+  toast('Anda sudah log out');
+  go('home')
+};
+</script>
+</body>
+</html>
